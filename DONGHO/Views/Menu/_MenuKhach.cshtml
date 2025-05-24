@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MEGATECH.Models.EF.Category>
+
+@{
+    MEGATECH.Models.EF.KhachHang khach = Session["khach"] as MEGATECH.Models.EF.KhachHang;
+}
+
+<style>
+    .navbar_menu li :hover {
+        text-decoration: none;
+    }
+</style>
+
+@if (khach != null)
+{
+    <ul class="navbar_menu">
+        <li>Xin chào : @khach.FullName</li>
+        <li><a href="@Url.Action("Logout", "KhachHang")">Đăng xuất</a></li>
+    </ul>
+}
+else
+{
+<ul class="navbar_menu">
+    <li><a href="@Url.Action("Login", "KhachHang")">Đăng nhập</a></li>
+    <li><a href="@Url.Action("Register", "KhachHang")">Đăng ký</a></li>
+</ul>
+}
